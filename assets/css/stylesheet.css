@@ -270,18 +270,19 @@ ul.follow-links li.youtube a:hover {
 /* Introduction CSS */
 #btn-mywork {
 	background: url(../images/btn-mywork.png) center 0px no-repeat;
-	font-size: 22px;
+	font-size: 18px;
 	color: #fff;
 	text-transform: uppercase;
 	text-align: center;
 	display: block;
-	padding-top: 63px;
+	padding-top: 39px;
 	width: 97px;
 	cursor: pointer;
-	margin: 110px auto 0 auto;
+	margin: 113px auto 0 auto;
 }
 #btn-mywork:hover {
 	background-position: center -90px;
+	color: #dc143c;
 }
 #btn-goback {
 	background: url(../images/btn-goback.png) center 0px no-repeat;
