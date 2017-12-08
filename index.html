@@ -1,1 +1,137 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Big Data for Bio Applications Course Project </title>
+<meta name="keywords" content="DeBruijn graph,big data" />
+<meta name="description" content="This is a CIS6930 course project website explaining how we went about the project and presents our code here " /> 
+<link rel="Shortcut Icon" href="assets/images/favicon.ico" />
+<link href="assets/css/stylesheet.css" rel="stylesheet" type="text/css" />
+<script src="assets/js/jquery.js" type="text/javascript"></script>
+<script src="assets/js/modernizr.js" type="text/javascript"></script>
+<script src="assets/js/scrollto.js" type="text/javascript"></script>
+<script src="assets/js/jquery.localscroll-min.js" type="text/javascript"></script>
+<script src="assets/js/jquery.bxSlider.min.js" type="text/javascript"></script>
+<script src="assets/js/custom.js" type="text/javascript"></script>
+
+</head>
+
+<body id="home">
+<!-- Header -->
+<header>
+
+<!-- About -->
+<aside class="about-me" id="aboutDiv">
+<article class="body">
+<hgroup class="group-about float-l">
+<h7><span>Dynamic	DBG: Adding	Dynamic	Vertices</span></h7>
+<br>
+<h7> DeBruijn graphs</h7>
+<p>Bioinformaticians define	 the	 kth-order	 de	 Bruijn	graph	 for	a	 string	 or	 set	 of	 strings	 to	 be	 the	
+  directed	graph	whose	nodes	are	the	distinct	k-tuples	in	those	strings	and	in	which	there	is	an	
+  edge	from	u	to	v	if	there	is	a	(k	+	1)-tuple	somewhere	in	those	strings	whose	prefix	of	length	k	is	
+  u	and	whose	suffix	of	length	k	is	v. These	graphs	have	many	uses	in	bioinformatics,	including	de	
+  novo	 assembly,	 read	 correction	 and	 pan-genomics.	 The	 datasets	 in	 these	 applications	 are	
+  massive	 and	 the	 graphs	 can	 be	 even	 larger,	 however,	 so	 pointer-based	 implementations	 are	
+  impractical.	 </p>
+  
+  <h7>Recent Approaches</h7>
+  <p>
+  Researchers	 have	 suggested	 several	approaches	 to	 representing	 de	 Bruijn	graphs	
+  compactly,	the	two	most	popular	of	which	are	based	on	Bloom	filters	and	the	Burrows-Wheeler
+  Transform,	 respectively.	 		</p>
+
+</hgroup>
+
+<hgroup class="group-pleasure float-l">
+<h7>Base paper</h7>
+<p>In	 a	 recent	 paper	 entitled	 “Fully	 Dynamic	 de	 Bruijn	 Graphs”	 a	 new	
+  approach	to	the	storage	is	described	that	is	based	on	minimal	perfect	hash	functions.		It	is	similar	
+  to	 using	 Bloom	 filters	 but	 has	 better	 theoretical	 bounds	 when	 the	 number	 of	 connected	
+  components	in	the	graph	is	small,	and	is	fully	dynamic:	i.e.,	we	can	both	insert	and	delete	nodes	
+  and	edges	efficiently.</p>
+<h7>Special Thanks</h7>
+<p> Dr. Christina Boucher, for giving us the opportunity to work on this project through a special topics course CIS6930. </p>
+<h7>Interested in checking out our code?</h7>
+<!-- Add project code -->
+<a href="" class="btn-resume">Download Our Project</a>
+<a href="https://docs.google.com/presentation/d/1U25YT9wSujeoQEz4i27yhb5cCTHHcsKaanNfPWxy2N4/edit#slide=id.g2b919e3842_1_78" class="btn-resume">Our Presentation</a>
+</hgroup>
+<hgroup class="group-pic float-r">
+<img src="assets/images/DNA-Matrix.gif" alt="" width="240" height="280" />
+</hgroup>
+</article>
+
+</aside>
+
+<!-- Contact -->
+<aside class="contact-me" id="contactDiv">
+<article class="body">
+<hgroup class="group-about float-l">
+<h7><span>Eureka? Let's discuss.</span></h7>
+<p>Or something similar :P<br/>
+Thanks to everyone who has helped us whenever we had doubts or queries. We improve by sharing ideas and fruitful discussions.
+</hgroup>
+<hgroup class="group-form float-r">
+    <a href="mailto:acolas1@ufl.edu">Anthony Colas </a> <br>
+<a href="mailto:ayushkhandelwal.ak@gmail.com">Ayush Khandelwal </a> <br>
+<a href="mailto:bharish94@gmail.com">Harish Balaji </a> <br>
+<a href="mailto:shubhamshukla@gmail.com">Shubh Shukla </a> 
+</hgroup>
+</article>
+<article id="HidePageContact" class="HidePage"></article>
+</aside>
+
+<!-- Navigation -->
+<nav class="body">
+<ul class="main-nav float-l">
+<li class="home"><a href="#home" class="active">Home</a></li>
+<li><a class="showhide-about" id="AboutDivLink">About</a>
+</li>
+<li><a class="showhide-contact" id="ContactDivLink">Contact</a></li>
+</ul>
+<ul class="follow-links float-r">
+  <a href="https://github.com/ayushk1995/BioApplicationProject"><li>Follow on  GitHub   </li></a>
+
+
+
+</ul>
+</nav>
+</header>
+
+<!-- Introduction -->
+<aside id="introduction">
+<article class="body">
+<hgroup>
+<h1 class="brd-btm" align="center">Adding Dynamic Vertices</h1>
+<h2 align="center">The First Task /<br/>
+<strong>Rabin Karp Hashing</strong></h2>
+<h3 align="center" class="mar-top-10">This is essentially the first step in <br/>generating a unique hash value for every distinct kmer.<br/>to browse portfolio.</h3>
+</hgroup>
+<a id="btn-mywork" href="#recent-web">Next Steps</a>
+</article>
+</aside>
+
+
+<aside id="recent-web" class="float-l">
+<article class="body">
+<h4 class="head float-l">The next steps</h4>
+<!-- Left Menu -->
+<ul class="left-menu float-l">
+<li><a href="#recent-web" class="active">In-Out Matrices & Minimal perfect Hashing</a></li>
+<li><a href="#recent-fb">Implementing the forrest for false positives</a></li>
+<li><a href="#recent-iphone">Accomodating for insertions and deletions</a></li>
+</ul>
+<!-- Gallery Section -->
+<section class="web-gallery float-l" id="ShowWebProjectDiv">
+<ul id="web-slider">
+  <li><img src="assets/images/fp.jpg" alt="img" width=600px /></li>
+  <li><img src="assets/images/for.jpg" alt="img" width=600px /></li>
+  <li><img src="assets/images/sc.jpg" alt="img" width=600px/></li>
+</ul>
+</body>
+
+
+</html>
