@@ -139,6 +139,13 @@ body {
 	color: #fff;
 }
 a {
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	cursor:pointer;
+}
+
+a.inside {
 	color: #000;
 	text-decoration: none;
 	position: relative;
