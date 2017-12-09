@@ -1,71 +1,74 @@
-# [Start Bootstrap - Freelancer](https://startbootstrap.com/template-overviews/freelancer/)
+# Adding Dynamic Vertices to a Dynamic de Bruijn graph.
 
-[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, and a working PHP contact form.
+Belazzougui et al. (2016) presents  a space- and time-efficient fully dynamic implementation de Bruijn graphs. The goal of this project is to implement the approach in this paper for dynamic vertices. 
 
-## Preview
+## Getting Started
 
-[![Freelancer Preview](https://startbootstrap.com/assets/img/templates/freelancer.jpg)](https://blackrockdigital.github.io/startbootstrap-freelancer/)
+You can find the project code hosted as a zip file on the project website: https://h-bee.github.io/ or you can choose to clone it from the GitHub repository : https://github.com/thegreedychoice/FullyDynamicDeBruijn
 
-**[View Live Preview](https://blackrockdigital.github.io/startbootstrap-freelancer/)**
+### Prerequisites
 
-## Status
+You will need:
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-freelancer/master/LICENSE)
-[![npm version](https://img.shields.io/npm/v/startbootstrap-freelancer.svg)](https://www.npmjs.com/package/startbootstrap-freelancer)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-freelancer.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-freelancer)
-[![dependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer/status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer)
-[![devDependencies Status](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer/dev-status.svg)](https://david-dm.org/BlackrockDigital/startbootstrap-freelancer?type=dev)
+* Python 2.7 (2.7.12 or newer)
+* graphviz (an open source visualization software)
+* BitArray2D (for storing the IN and OUT matrix efficiently)
 
-## Download and Installation
+### Installing
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](https://startbootstrap.com/template-overviews/freelancer/)
-* Install via npm: `npm i startbootstrap-freelancer`
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-freelancer.git`
-* [Fork, Clone, or Download on GitHub](https://github.com/BlackrockDigital/startbootstrap-freelancer)
+* Download and install **Python version (2.7.12 or newer)** from [Python's official download page] (https://www.python.org/downloads/) if it's not present.
+* Install **pip** using this [link](https://pip.pypa.io/en/stable/installing/) if it's not already installed.
+* Install **graphviz** using the following command:
+```
+    
+                pip install graphviz
 
-## Usage
+```
+* Install **BitArray2D** using the following command:
+```
 
-### Basic Usage
+                pip install BitArray2D
 
-After downloading, simply edit the HTML and CSS files included with the template in your favorite text editor to make changes. These are the only files you need to worry about, you can ignore everything else! To preview the changes you make to the code, you can open the `index.html` file in your web browser.
+```
+## Running the program
 
-### Advanced Usage
+For testing purposes we have created 3 instances of varying file sizes(around 5MB, 10MB, 20MB) FASTQ file (s_6_1.fastq.gz) obtained from [here] (http://spades.bioinf.spbau.ru/spades_test_datasets/ecoli_mc/). 
 
-After installation, run `npm install` and then run `gulp dev` which will open up a preview of the template in your default browser, watch for changes to core template files, and live reload the browser when changes are saved. You can view the `gulpfile.js` to see which tasks are included with the dev environment.
+Run **'__main__.py'** and follow prompts to input size of K and k-mers for searching, insertion and deletion.
+```
 
-#### Gulp Tasks
+            python __main__.py
+```
 
-- `gulp` the default task that builds everything
-- `gulp dev` browserSync opens the project in your default browser and live reloads when changes are made
-- `gulp sass` compiles SCSS files into CSS
-- `gulp minify-css` minifies the compiled CSS file
-- `gulp minify-js` minifies the themes JS file
-- `gulp copy` copies dependencies from node_modules to the vendor directory
 
-## Bugs and Issues
+### Changing the input FASTQ file
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-freelancer/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/freelancer/).
+### Output Specifications
 
-## Custom Builds
 
-You can hire Start Bootstrap to create a custom build of any template, or create something from scratch using Bootstrap. For more information, visit the **[custom design services page](https://startbootstrap.com/bootstrap-design-services/)**.
 
-## About
 
-Start Bootstrap is an open source library of free Bootstrap templates and themes. All of the free templates and themes on Start Bootstrap are released under the MIT license, which means you can use them for any purpose, even for commercial projects.
+## Built With
 
-* https://startbootstrap.com
-* https://twitter.com/SBootstrap
+* [Python](https://www.python.org/doc/) - The programming language used
+* [graphviz](https://www.graphviz.org/documentation/) - Visualization package for graph
+* [BitArray2D](https://pypi.python.org/pypi/BitArray2D/2.1) - Used for memory-efficient packed representation of 2D bit arrays in Python
+* [Minimal Perfect Hashing] (http://stevehanov.ca/blog/index.php?id=119) - Used for performing minimal perfect hashing on top of the Rabin-Karp hashed values
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
+## Versioning
 
-* http://davidmiller.io
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
+We use [GitHub](https://github.com/) for versioning. For the current version, see the [Final project code for submission](https://github.com/thegreedychoice/FullyDynamicDeBruijn/tree/v1.0). 
 
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
+## Authors
 
-## Copyright and License
+* **Anthony M Colas**
+* **Ayush Khandelwal** 
+* **Harish Balaji**
+* **Shubham Shukla**
 
-Copyright 2013-2017 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license.
+## Acknowledgments
+
+* **Dr. Christina Boucher**, for guiding us with the project all throughout the course.
+* **Dr. Travis Gagie**, for providing insights on his paper 'Fully dynamic de Bruijn Graph' and clearing doubts regarding forest data structure used  
+* **Steve Hanov**, for the code for an easy, minimal perfect hashing method hosted on his blog. 
+
