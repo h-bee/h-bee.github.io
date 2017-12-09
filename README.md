@@ -34,6 +34,29 @@ You will need:
 
 For testing purposes we have created 3 instances of varying file sizes(around 5MB, 10MB, 20MB) FASTQ file (s_6_1.fastq.gz) obtained from [here] (http://spades.bioinf.spbau.ru/spades_test_datasets/ecoli_mc/). 
 
+Download the code from the website using:
+```
+      wget https://h-bee.github.io/FullyDynamicDeBruijn-master.zip
+
+```
+
+
+Unzip the file:
+```
+
+unzip FullyDynamicDeBruijn-master.zip
+
+
+```
+
+Enter the project directory:
+
+```
+
+cd FullyDynamicDeBruijn-master
+
+```
+
 Run **'test.py'** and follow prompts to input size of K and k-mers for searching, insertion and deletion.
 ```
 
