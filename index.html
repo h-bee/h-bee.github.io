@@ -1,142 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Big Data for Bio Applications Course Project </title>
-<meta name="keywords" content="DeBruijn graph,big data" />
-<meta name="description" content="This is a CIS6930 course project website explaining how we went about the project and presents our code here " /> 
-<link rel="Shortcut Icon" href="assets/images/favicon.ico" />
-<link href="assets/css/stylesheet.css" rel="stylesheet" type="text/css" />
-<script src="assets/js/jquery.js" type="text/javascript"></script>
-<script src="assets/js/modernizr.js" type="text/javascript"></script>
-<script src="assets/js/scrollto.js" type="text/javascript"></script>
-<script src="assets/js/jquery.localscroll-min.js" type="text/javascript"></script>
-<script src="assets/js/jquery.bxSlider.min.js" type="text/javascript"></script>
-<script src="assets/js/custom.js" type="text/javascript"></script>
+  <head>
 
-</head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<body id="home">
-<!-- Header -->
-<header>
+    <title>Fully dynamic de Bruijn Implementation</title>
 
-<!-- About -->
-<aside class="about-me" id="aboutDiv">
-<article class="body">
-<hgroup class="group-about float-l">
-<h7><span>Dynamic	DBG: Adding	Dynamic	Vertices</span></h7>
-<br>
-<h7> DeBruijn graphs</h7>
-<p>Bioinformaticians define	 the	 kth-order	 de	 Bruijn	graph	 for	a	 string	 or	 set	 of	 strings	 to	 be	 the	
-  directed	graph	whose	nodes	are	the	distinct	k-tuples	in	those	strings	and	in	which	there	is	an	
-  edge	from	u	to	v	if	there	is	a	(k	+	1)-tuple	somewhere	in	those	strings	whose	prefix	of	length	k	is	
-  u	and	whose	suffix	of	length	k	is	v. These	graphs	have	many	uses	in	bioinformatics,	including	de	
-  novo	 assembly,	 read	 correction	 and	 pan-genomics.	 The	 datasets	 in	 these	 applications	 are	
-  massive	 and	 the	 graphs	 can	 be	 even	 larger,	 however,	 so	 pointer-based	 implementations	 are	
-  impractical.	 </p>
-  
-  <h7>Recent Approaches</h7>
-  <p>
-  Researchers	 have	 suggested	 several	approaches	 to	 representing	 de	 Bruijn	graphs	
-  compactly,	the	two	most	popular	of	which	are	based	on	Bloom	filters	and	the	Burrows-Wheeler
-  Transform,	 respectively.	 		</p>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/freelancer.min.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Home</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Home</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+            </li>
+            <li class="nav-item mx-0 mx-lg-1">
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="masthead bg-primary text-white text-center">
+      <div class="container">
+        <img class="img-fluid mb-5 d-block mx-auto" src="img/" alt="">
+        <h2 class="text-uppercase mb-0">Fully dynamic de Bruijn Graph</h2>
+        
+        <hr class="star-light">
+          <h5 class="font-weight-light mb-0">
+<h6 style="color:black"> Dynamic DBG: Adding Dynamic Vertices  </h6> <br>
+Bioinformaticians define  the kth-order de  Bruijn  graph for a string  or  set of strings  to  be  the directed  graph whose nodes are the distinct  k-tuples  in  those strings and in  which there is  an  edge from u to  v if  there is  a (k  + 1)-tuple somewhere  in  those strings whose prefix  of  length  k is  u and whose suffix of length  k is  v. These  graphs  have many uses  in  bioinformatics, including de  novo  assembly, read  correction  and pan-genomics. The datasets  in  these applications  are massive and the graphs  can be  even  larger, however,  so pointer-based  implementations are impractical.</h5>
+
+        <hr class="star-light">
+          <h5 class="font-weight-light mb-0">
+<h6 style="color:black"> Base paper  </h6> <br>
+            In  a   recent  paper   entitled  “Fully  Dynamic   de  Bruijn  Graphs”   a   new  
+    approach  to  the storage is  described that  is  based on  minimal perfect hash  functions.    It  is  similar 
+    to   using   Bloom   filters   but   has   better  theoretical   bounds  when  the   number  of  connected  
+    components  in  the graph is  small,  and is  fully dynamic:  i.e., we  can both  insert  and delete  nodes 
+    and edges efficiently</h5>
+      </div>
+    </header>
+
+    
+
+    <!-- About Section -->
+    <section class="bg-primary text-white mb-0" id="about">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-white">About</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+          <div class="col-lg-4 ml-auto">
+            <p class="lead">
+              <h5 style="color:black">Special Thanks </h5>
+Dr. Christina Boucher, for giving us the opportunity to work on this project through a special topics course CIS6930.</p>
+          </div>
+          <div class="col-lg-4 mr-auto">
+            <p class="lead">
+              <h5 style="color:black">Recent Approaches </h5>
+Researchers have  suggested several approaches  to  representing  de  Bruijn graphs compactly,  the two most popular  of  which are based on  Bloom filters and the Burrows-Wheeler Transform,  respectively.</p>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a class="btn btn-xl btn-outline-light" href="#">
+            <i class="fa fa-download mr-2"></i>
+            Download Now!
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Contact Us</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+              
+               <a href="mailto:acolas1@ufl.edu" class="inside">Anthony Colas </a> <br>
+                <a href="mailto:ayushkhandelwal.ak@gmail.com" class="inside">Ayush Khandelwal </a> <br>
+                <a href="mailto:bharish94@gmail.com" class="inside">Harish Balaji </a> <br>
+                <a href="mailto:shubh77@ufl.edu" class="inside">Shubh Shukla </a> 
 </hgroup>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<hgroup class="group-pleasure float-l">
-<h7>Base paper</h7>
-<p>In	 a	 recent	 paper	 entitled	 “Fully	 Dynamic	 de	 Bruijn	 Graphs”	 a	 new	
-  approach	to	the	storage	is	described	that	is	based	on	minimal	perfect	hash	functions.		It	is	similar	
-  to	 using	 Bloom	 filters	 but	 has	 better	 theoretical	 bounds	 when	 the	 number	 of	 connected	
-  components	in	the	graph	is	small,	and	is	fully	dynamic:	i.e.,	we	can	both	insert	and	delete	nodes	
-  and	edges	efficiently.</p>
-<h7>Special Thanks</h7>
-<p> Dr. Christina Boucher, for giving us the opportunity to work on this project through a special topics course CIS6930. </p>
-<h7>Interested in checking out our code?</h7>
-<!-- Add project code -->
-<a href="https://github.com/thegreedychoice/FullyDynamicDeBruijn" class="btn-resume">Download Our Project</a>
-<a href="README.md" class="btn-resume">Readme</a>
-<a href="https://docs.google.com/presentation/d/1U25YT9wSujeoQEz4i27yhb5cCTHHcsKaanNfPWxy2N4/edit#slide=id.p" target="_blank" class="btn-resume">Our Presentation</a>
-</hgroup>
-<hgroup class="group-pic float-r">
-<img src="assets/images/DNA-Matrix.gif" alt="" width="240" height="280" />
-</hgroup>
-</article>
+    <!-- Footer -->
+    <footer class="footer text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Location</h4>
+            <p class="lead mb-0">2215 John Daniel Drive
+              <br>Clark, MO 65243</p>
+          </div>
+          <div class="col-md-4 mb-5 mb-lg-0">
+            <h4 class="text-uppercase mb-4">Around the Web</h4>
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                  <i class="fa fa-fw fa-facebook"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                  <i class="fa fa-fw fa-google-plus"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                  <i class="fa fa-fw fa-twitter"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                  <i class="fa fa-fw fa-linkedin"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="#">
+                  <i class="fa fa-fw fa-dribbble"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h4 class="text-uppercase mb-4">About Freelancer</h4>
+            <p class="lead mb-0">Freelance is a free to use, open source Bootstrap theme created by
+              <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-</aside>
+    <div class="copyright py-4 text-center text-white">
+      <div class="container">
+        <small>Copyright &copy; Your Website 2017</small>
+      </div>
+    </div>
 
-<!-- Contact -->
-<aside class="contact-me" id="contactDiv">
-<article class="body">
-<hgroup class="group-about float-l">
-<h7><span>Eureka? Let's discuss.</span></h7>
-<p>Or something similar :P<br/>
-Thanks to everyone who has helped us whenever we had doubts or queries. We improve by sharing ideas and fruitful discussions.
-</hgroup>
-<hgroup class="group-form float-r">
-    <a href="mailto:acolas1@ufl.edu" class="inside">Anthony Colas </a> <br>
-<a href="mailto:ayushkhandelwal.ak@gmail.com" class="inside">Ayush Khandelwal </a> <br>
-<a href="mailto:bharish94@gmail.com" class="inside">Harish Balaji </a> <br>
-<a href="mailto:shubh77@ufl.edu" class="inside">Shubh Shukla </a> 
-</hgroup>
-</article>
-<article id="HidePageContact" class="HidePage"></article>
-</aside>
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-to-top d-lg-none position-fixed ">
+      <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+    </div>
 
-<!-- Navigation -->
-<nav class="body">
-<ul class="main-nav float-l">
-<li class="home"><a href="#home" class="active">Home</a></li>
-<li><a class="showhide-about" id="AboutDivLink">About</a>
-</li>
-<li><a class="showhide-contact" id="ContactDivLink">Contact</a></li>
-</ul>
-<ul class="follow-links float-r">
-  <a href="https://github.com/thegreedychoice/FullyDynamicDeBruijn" target="_blank"><li>Follow on  GitHub   </li></a>
+    <!-- Portfolio Modals -->
 
+    <!-- Portfolio Modal 1 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-1">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+              <hr class="star-dark mb-5">
+              <img class="img-fluid mb-5" src="img/portfolio/cabin.png" alt="">
+              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                <i class="fa fa-close"></i>
+                Close Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Portfolio Modal 2 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-2">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+              <hr class="star-dark mb-5">
+              <img class="img-fluid mb-5" src="img/portfolio/cake.png" alt="">
+              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                <i class="fa fa-close"></i>
+                Close Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</ul>
-</nav>
-</header>
+    <!-- Portfolio Modal 3 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-3">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+              <hr class="star-dark mb-5">
+              <img class="img-fluid mb-5" src="img/portfolio/circus.png" alt="">
+              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                <i class="fa fa-close"></i>
+                Close Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<!-- Introduction -->
-<aside id="introduction">
-<article class="body">
-<hgroup>
-<h1 class="brd-btm" align="center">Adding Dynamic Vertices</h1>
-<h2 align="center">The First Task /<br/>
-<strong>Rabin Karp Hashing</strong></h2>
-<h3 align="center" class="mar-top-10">This is essentially the first step in <br/>generating a unique hash value for every distinct kmer.<br/>to browse portfolio.</h3>
-<br>
-<h3 align="center"> Download or clone our project code <a href="https://github.com/thegreedychoice/FullyDynamicDeBruijn"> here </a> and <a href="README.md">readme file</a> </h3>
-</hgroup>
+    <!-- Portfolio Modal 4 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-4">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+              <hr class="star-dark mb-5">
+              <img class="img-fluid mb-5" src="img/portfolio/game.png" alt="">
+              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                <i class="fa fa-close"></i>
+                Close Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-<a id="btn-mywork" href="#recent-web"><br><b>Next Steps</b></a>
-</article>
-</aside>
+    <!-- Portfolio Modal 5 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-5">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+              <hr class="star-dark mb-5">
+              <img class="img-fluid mb-5" src="img/portfolio/safe.png" alt="">
+              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                <i class="fa fa-close"></i>
+                Close Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Portfolio Modal 6 -->
+    <div class="portfolio-modal mfp-hide" id="portfolio-modal-6">
+      <div class="portfolio-modal-dialog bg-white">
+        <a class="close-button d-none d-md-block portfolio-modal-dismiss" href="#">
+          <i class="fa fa-3x fa-times"></i>
+        </a>
+        <div class="container text-center">
+          <div class="row">
+            <div class="col-lg-8 mx-auto">
+              <h2 class="text-secondary text-uppercase mb-0">Project Name</h2>
+              <hr class="star-dark mb-5">
+              <img class="img-fluid mb-5" src="img/portfolio/submarine.png" alt="">
+              <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+              <a class="btn btn-primary btn-lg rounded-pill portfolio-modal-dismiss" href="#">
+                <i class="fa fa-close"></i>
+                Close Project</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<aside id="recent-web" class="float-l">
-<article class="body">
-<h4 class="head float-l">The next steps</h4>
-<!-- Left Menu -->
-<ul class="left-menu float-l">
-<li><a href="https://docs.google.com/presentation/d/1U25YT9wSujeoQEz4i27yhb5cCTHHcsKaanNfPWxy2N4/edit#slide=id.g2b880dda26_1_43" target="_blank" class="active">In-Out Matrices & Minimal perfect Hashing</a></li>
-<li><a href="https://docs.google.com/presentation/d/1U25YT9wSujeoQEz4i27yhb5cCTHHcsKaanNfPWxy2N4/edit#slide=id.g2b880dda26_1_138" target="_blank">Implementing the forrest for false positives</a></li>
-<li><a href="https://docs.google.com/presentation/d/1U25YT9wSujeoQEz4i27yhb5cCTHHcsKaanNfPWxy2N4/edit#slide=id.g2b9325eac2_0_48" target="_blank">Accomodating for insertions and deletions</a></li>
-</ul>
-<!-- Gallery Section -->
-<section class="web-gallery float-l" id="ShowWebProjectDiv">
-<ul id="web-slider">
-  <li><img src="assets/images/fp.JPG" alt="Forest Construction" width=600px /></li>
-  <li><img src="assets/images/for.JPG" alt="False Positives" width=600px /></li>
-  <li><img src="assets/images/sc.JPG" alt="Search Query" width=600px/></li>
-</ul>
-</body>
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
+
+  </body>
 
 </html>
